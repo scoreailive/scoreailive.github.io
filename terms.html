@@ -1,255 +1,614 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Kullanım Şartları — Score AI</title>
-<meta name="description" content="Score AI kullanım şartları — hizmet kapsamı, abonelik koşulları ve sorumluluklar." />
+<meta name="description" content="Score AI kullanım şartları — hizmet kapsamı, abonelik koşulları, AI sorumluluk reddi ve kullanıcı yükümlülükleri." />
+<meta name="theme-color" content="#0A0E1A" />
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="apple-touch-icon" href="logo.png" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
 <style>
+  :root {
+    --bg: #0A0E1A;
+    --surface: #121829;
+    --card: #1A2035;
+    --border: #1E293B;
+    --border-strong: #2D3A52;
+    --primary: #00F5A0;
+    --primary-soft: rgba(0,245,160,0.10);
+    --secondary: #3B82F6;
+    --warning: #F59E0B;
+    --warning-soft: rgba(245,158,11,0.10);
+    --warning-border: rgba(245,158,11,0.30);
+    --text: #FFFFFF;
+    --text-2: #D1D5DB;
+    --text-3: #9CA3AF;
+    --text-4: #6B7280;
+    --radius: 16px;
+    --maxw: 860px;
+  }
   *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', sans-serif; background: #0A0E1A; color: #FFFFFF; line-height: 1.7; }
-  .container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
-  nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0; border-bottom: 1px solid #1E293B; margin-bottom: 40px; }
-  .logo { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 18px; text-decoration: none; color: #FFFFFF; }
-  .logo-dot { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, #00F5A0 0%, #3B82F6 100%); }
-  .lang-toggle { display: flex; gap: 4px; padding: 4px; background: #121829; border: 1px solid #1E293B; border-radius: 999px; }
-  .lang-toggle button { background: transparent; color: #9CA3AF; border: 0; padding: 6px 14px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
-  .lang-toggle button.active { background: #00F5A0; color: #0A0E1A; }
-  h1 { font-size: clamp(28px, 5vw, 44px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
-  .updated { color: #9CA3AF; font-size: 14px; margin-bottom: 40px; }
-  h2 { font-size: 22px; font-weight: 700; margin-top: 40px; margin-bottom: 12px; color: #FFFFFF; }
-  h3 { font-size: 16px; font-weight: 600; margin-top: 20px; margin-bottom: 8px; color: #00F5A0; }
-  p, li { color: #D1D5DB; font-size: 15px; margin-bottom: 12px; }
-  ul { padding-left: 22px; margin-bottom: 12px; }
-  li { margin-bottom: 6px; }
-  a { color: #00F5A0; }
-  strong { color: #FFFFFF; }
-  .callout-warning { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 16px 20px; margin: 20px 0; }
-  .callout-warning p { color: #FBBF24; }
-  .callout-warning strong { color: #FBBF24; }
-  .callout { background: #1A2035; border: 1px solid #1E293B; border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
-  footer { border-top: 1px solid #1E293B; padding: 32px 0; margin-top: 60px; text-align: center; color: #9CA3AF; font-size: 14px; }
-  footer a { color: #9CA3AF; text-decoration: none; margin: 0 8px; }
-  footer a:hover { color: #00F5A0; }
-  [lang-en] { display: none; }
-  body.en [lang-tr] { display: none; }
-  body.en [lang-en] { display: initial; }
-  body.en h1[lang-en], body.en h2[lang-en], body.en h3[lang-en], body.en p[lang-en], body.en ul[lang-en], body.en div[lang-en] { display: block; }
-  body.en li[lang-en] { display: list-item; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background: var(--bg); color: var(--text);
+    line-height: 1.7; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  img { display: block; max-width: 100%; }
+
+  html[lang="tr"] [data-lang="en"] { display: none; }
+  html[lang="en"] [data-lang="tr"] { display: none; }
+
+  .atmosphere {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(40% 30% at 15% 0%, rgba(0,245,160,0.06), transparent 60%),
+      radial-gradient(30% 25% at 90% 5%, rgba(59,130,246,0.08), transparent 60%);
+  }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+  .nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); background: rgba(10, 14, 26, 0.72); border-bottom: 1px solid var(--border); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; max-width: 1100px; margin: 0 auto; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
+  .brand img { width: 36px; height: 36px; border-radius: 10px; box-shadow: 0 4px 14px rgba(0,245,160,0.20); }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .brand-name { font-weight: 800; font-size: 17px; letter-spacing: -0.01em; }
+  .brand-sub { font-weight: 500; font-size: 10.5px; color: var(--text-3); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 1px; }
+  @media (max-width: 480px) { .brand-sub { display: none; } }
+
+  .lang-switch { display: flex; gap: 2px; padding: 3px; background: var(--surface); border: 1px solid var(--border); border-radius: 999px; }
+  .lang-switch button { background: transparent; color: var(--text-3); border: 0; padding: 6px 12px; border-radius: 999px; font-family: inherit; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; cursor: pointer; transition: all 0.2s; }
+  .lang-switch button.on { background: var(--primary); color: var(--bg); }
+  .lang-switch button:hover:not(.on) { color: var(--text); }
+
+  .doc-hero { padding: 56px 0 24px; }
+  .doc-hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 14px; }
+  .doc-meta { display: flex; gap: 12px; align-items: center; color: var(--text-3); font-size: 13.5px; flex-wrap: wrap; }
+  .doc-meta-dot { width: 4px; height: 4px; background: var(--text-4); border-radius: 50%; }
+  .doc-meta-badge { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; background: var(--primary-soft); color: var(--primary); border: 1px solid rgba(0,245,160,0.20); border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .doc-meta-badge svg { width: 12px; height: 12px; }
+
+  .toc { margin: 32px 0 48px; padding: 22px 26px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+  .toc-title { font-size: 11px; font-weight: 700; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.10em; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .toc-title svg { width: 14px; height: 14px; color: var(--primary); }
+  .toc-list { list-style: none; column-count: 2; column-gap: 28px; }
+  .toc-list li { break-inside: avoid; margin-bottom: 8px; }
+  .toc-list a { color: var(--text-2); text-decoration: none; font-size: 13.5px; transition: color 0.2s; display: flex; gap: 8px; }
+  .toc-list a:hover { color: var(--primary); }
+  .toc-list a .n { color: var(--text-4); min-width: 20px; }
+  @media (max-width: 600px) { .toc-list { column-count: 1; } }
+
+  .doc-content { padding-bottom: 60px; }
+  .doc-content h2 {
+    font-size: 22px; font-weight: 700; margin-top: 48px; margin-bottom: 16px;
+    color: var(--text); letter-spacing: -0.01em; scroll-margin-top: 80px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .doc-content h2:first-of-type { margin-top: 12px; }
+  .doc-content h2 .num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px;
+    border-radius: 8px; background: var(--primary-soft); color: var(--primary);
+    font-size: 12px; font-weight: 700; flex-shrink: 0;
+  }
+  .doc-content h3 { font-size: 15px; font-weight: 700; margin-top: 22px; margin-bottom: 10px; color: var(--primary); letter-spacing: 0.01em; }
+  .doc-content p, .doc-content li { color: var(--text-2); font-size: 15px; line-height: 1.75; margin-bottom: 12px; }
+  .doc-content ul, .doc-content ol { padding-left: 22px; margin-bottom: 14px; }
+  .doc-content li { margin-bottom: 6px; }
+  .doc-content li::marker { color: var(--primary); }
+  .doc-content strong { color: var(--text); font-weight: 700; }
+  .doc-content a { color: var(--primary); text-decoration: none; border-bottom: 1px dashed currentColor; transition: color 0.2s; }
+  .doc-content a:hover { color: var(--text); border-bottom-color: var(--text); }
+
+  .callout {
+    margin: 20px 0;
+    padding: 18px 22px;
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    border-left: 3px solid var(--primary);
+  }
+  .callout p:last-child { margin-bottom: 0; }
+
+  .callout.warn {
+    background: var(--warning-soft);
+    border-color: var(--warning-border);
+    border-left-color: var(--warning);
+  }
+  .callout.warn p { color: #FDE68A; }
+  .callout.warn strong { color: #FEF3C7; }
+  .callout.warn a { color: #FDE68A; }
+
+  .callout-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px;
+    font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .callout-header svg { width: 18px; height: 18px; flex-shrink: 0; }
+  .callout.warn .callout-header { color: var(--warning); }
+
+  .foot { border-top: 1px solid var(--border); padding: 36px 0 32px; margin-top: 60px; }
+  .foot-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .foot-brand { display: flex; align-items: center; gap: 10px; color: var(--text-3); font-size: 13px; }
+  .foot-brand img { width: 24px; height: 24px; border-radius: 6px; }
+  .foot-links { display: flex; gap: 22px; flex-wrap: wrap; }
+  .foot-links a { color: var(--text-3); text-decoration: none; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s; }
+  .foot-links a:hover { color: var(--primary); }
+  .foot-links svg { width: 14px; height: 14px; }
+  .foot-copy { margin-top: 22px; color: var(--text-4); font-size: 12px; padding: 0 24px; max-width: 1100px; margin-left: auto; margin-right: auto; }
+  @media (max-width: 600px) { .foot-inner { flex-direction: column; align-items: flex-start; } }
 </style>
 </head>
 <body>
-<div class="container">
-  <nav>
-    <a href="index.html" class="logo"><div class="logo-dot"></div><span>Score AI</span></a>
-    <div class="lang-toggle">
-      <button id="btn-tr" class="active" onclick="setLang('tr')">TR</button>
-      <button id="btn-en" onclick="setLang('en')">EN</button>
+<div class="atmosphere"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="Score AI Logo" />
+      <span class="brand-text">
+        <span class="brand-name">Score AI</span>
+        <span class="brand-sub">Live Match Analysis</span>
+      </span>
+    </a>
+    <div class="lang-switch">
+      <button data-lang-btn="tr">TR</button>
+      <button data-lang-btn="en">EN</button>
     </div>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ════════ TR ════════ -->
+<div data-lang="tr">
+  <section class="doc-hero">
+    <h1>Kullanım Şartları</h1>
+    <div class="doc-meta">
+      <span class="doc-meta-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+        EULA v1.0
+      </span>
+      <span>Yürürlük: 14 Mayıs 2026</span>
+      <span class="doc-meta-dot"></span>
+      <span>Son güncelleme: 14 Mayıs 2026</span>
+    </div>
+  </section>
+
+  <div class="callout warn">
+    <div class="callout-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      Önemli Bilgilendirme
+    </div>
+    <p>Score AI <strong>bahis tavsiyesi sunmaz</strong>. Uygulamadaki analiz, tahmin ve öneriler <strong>yalnızca bilgilendirme amaçlıdır</strong>; yatırım, finans ya da bahis tavsiyesi niteliği taşımaz. Yapay zekâ çıktıları yanılabilir; finansal kararlarınızı yalnızca bu çıktılara dayandırmamalısınız. <strong>Tüm bahis kararlarından ve sonuçlarından yalnızca kullanıcı sorumludur.</strong></p>
+  </div>
+
+  <nav class="toc" aria-label="İçindekiler">
+    <div class="toc-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      İçindekiler
+    </div>
+    <ol class="toc-list">
+      <li><a href="#s1"><span class="n">01</span>Şartların Kabulü</a></li>
+      <li><a href="#s2"><span class="n">02</span>Hizmet Tanımı</a></li>
+      <li><a href="#s3"><span class="n">03</span>AI Sorumluluk Reddi</a></li>
+      <li><a href="#s4"><span class="n">04</span>Bahis Tavsiyesi Değildir</a></li>
+      <li><a href="#s5"><span class="n">05</span>Uygunluk ve Yaş</a></li>
+      <li><a href="#s6"><span class="n">06</span>Hesap Kaydı</a></li>
+      <li><a href="#s7"><span class="n">07</span>Kullanıcı Davranış Kuralları</a></li>
+      <li><a href="#s8"><span class="n">08</span>Abonelikler ve Otomatik Yenileme</a></li>
+      <li><a href="#s9"><span class="n">09</span>Krediler (Tek Seferlik Alımlar)</a></li>
+      <li><a href="#s10"><span class="n">10</span>Ücretsiz Deneme</a></li>
+      <li><a href="#s11"><span class="n">11</span>İptal ve İade</a></li>
+      <li><a href="#s12"><span class="n">12</span>Satın Alma Geri Yükleme</a></li>
+      <li><a href="#s13"><span class="n">13</span>Fiyat Değişiklikleri</a></li>
+      <li><a href="#s14"><span class="n">14</span>Fikri Mülkiyet</a></li>
+      <li><a href="#s15"><span class="n">15</span>Lisans Hakkı</a></li>
+      <li><a href="#s16"><span class="n">16</span>Hizmetin Sonlandırılması</a></li>
+      <li><a href="#s17"><span class="n">17</span>Garanti Reddi</a></li>
+      <li><a href="#s18"><span class="n">18</span>Sorumluluk Sınırlandırması</a></li>
+      <li><a href="#s19"><span class="n">19</span>Apple-Spesifik Şartlar</a></li>
+      <li><a href="#s20"><span class="n">20</span>Uygulanacak Hukuk</a></li>
+      <li><a href="#s21"><span class="n">21</span>Şartların Değişmesi</a></li>
+      <li><a href="#s22"><span class="n">22</span>İletişim</a></li>
+    </ol>
   </nav>
 
-  <!-- TR -->
-  <div lang-tr>
-    <h1>Kullanım Şartları</h1>
-    <div class="updated">Yürürlük tarihi: 14 Mayıs 2026</div>
+  <section class="doc-content">
 
-    <p>Bu Kullanım Şartları, <strong>Score AI</strong> mobil uygulamasını ("Uygulama" veya "Hizmet") kullanımınızı düzenler. Uygulamayı indirip kullanarak bu şartları kabul etmiş olursunuz.</p>
+    <h2 id="s1"><span class="num">01</span>Şartların Kabulü</h2>
+    <p>Bu Kullanım Şartları ("Şartlar" veya "EULA"), <strong>Score AI — Live Match Analysis</strong> mobil uygulamasını ("Uygulama" veya "Hizmet") kullanımınızı düzenleyen yasal bir sözleşmedir. Uygulamayı indirir, kurar veya kullanırsanız bu Şartları kabul etmiş sayılırsınız. Kabul etmiyorsanız uygulamayı kullanmamalısınız.</p>
 
-    <div class="callout-warning">
-      <p><strong>⚠️ Önemli Bilgilendirme:</strong> Score AI <strong>bahis tavsiyesi sunmaz</strong>. Uygulamadaki analiz, tahmin ve öneriler tamamen bilgilendirme amaçlıdır; yatırım, finans ya da bahis tavsiyesi niteliği taşımaz. Yapay zekâ çıktıları yanılabilir; finansal kararlarınızı yalnızca bu çıktılara dayandırmamalısınız.</p>
-    </div>
-
-    <h2>1. Yaş Sınırı</h2>
-    <p>Uygulamayı kullanabilmek için <strong>en az 18 yaşında</strong> olmalısınız. 18 yaş altı kullanıcılar Hizmeti kullanamaz. Bu yaşın altındaysanız uygulamayı silmeli ve hesap oluşturmamalısınız.</p>
-
-    <h2>2. Hizmet Tanımı</h2>
-    <p>Score AI; futbol maçları için yapay zekâ destekli analiz, tahmin, kupon optimizasyonu ve sohbet asistanı sunan bir mobil uygulamadır. Hizmet üç bileşenden oluşur:</p>
+    <h2 id="s2"><span class="num">02</span>Hizmet Tanımı</h2>
+    <p>Score AI, futbol maçları için yapay zekâ destekli analiz, tahmin, kupon değerlendirmesi ve sohbet asistanı sunan bir mobil uygulamadır. Hizmet üç katmandan oluşur:</p>
     <ul>
       <li><strong>Ücretsiz Özellikler:</strong> Temel maç verileri, sınırlı analiz hakları</li>
-      <li><strong>Kredi Sistemi:</strong> Tek seferlik satın alımlarla yapılan analiz/sohbet hakları</li>
-      <li><strong>VIP Abonelik:</strong> Sınırsız analiz, kupon optimizasyonu ve gelişmiş AI özellikleri</li>
+      <li><strong>Kredi Sistemi:</strong> Tek seferlik satın alımlarla edinilen analiz/sohbet hakları</li>
+      <li><strong>VIP Abonelik:</strong> Sınırsız analiz, kupon değerlendirmesi ve gelişmiş AI özellikleri</li>
     </ul>
 
-    <h2>3. AI Çıktıları & Sorumluluk Reddi</h2>
+    <h2 id="s3"><span class="num">03</span>AI Sorumluluk Reddi</h2>
     <div class="callout">
-      <p>Score AI tarafından üretilen tüm analizler, tahminler ve öneriler <strong>yapay zekâ modelleri tarafından olasılıksal yöntemlerle üretilir</strong> ve <strong>%100 doğruluk garantisi taşımaz</strong>. Geçmiş istatistikler, form bilgileri ve diğer veriler dikkate alınarak öngörü oluşturulur ancak spor karşılaşmalarının sonuçları doğası gereği tahmin edilemezdir. AI çıktılarına dayanarak verdiğiniz tüm kararlardan <strong>yalnızca siz sorumlusunuz</strong>.</p>
+      <p>Score AI tarafından üretilen tüm analizler, tahminler ve öneriler <strong>yapay zekâ modelleri tarafından olasılıksal yöntemlerle</strong> oluşturulur ve <strong>doğruluk garantisi taşımaz</strong>. Geçmiş istatistikler, form bilgileri ve diğer veriler dikkate alınarak öngörü üretilir; ancak spor karşılaşmalarının sonuçları doğası gereği tahmin edilemezdir.</p>
+      <p>AI çıktılarına dayanarak verdiğiniz tüm kararlardan <strong>yalnızca siz sorumlusunuz</strong>. Score AI ve geliştiricileri; AI çıktılarının doğruluğu, eksiksizliği veya belirli bir amaca uygunluğu konusunda hiçbir garanti vermez.</p>
+      <p>Uygunsuz, yanlış veya zararlı AI içeriği fark ederseniz <a href="mailto:scoreailivematch@gmail.com">scoreailivematch@gmail.com</a> adresine bildirin.</p>
     </div>
 
-    <h2>4. Hesap & Güvenlik</h2>
+    <h2 id="s4"><span class="num">04</span>Bahis Tavsiyesi Değildir</h2>
+    <div class="callout warn">
+      <p><strong>Score AI BİR BAHİS PLATFORMU DEĞİLDİR ve BAHİS TAVSİYESİ SUNMAZ.</strong> Hizmetimiz; istatistiksel analiz ve eğitsel amaçlarla, futbol maçlarına ilişkin bilgi ve öngörü sunar.</p>
+      <p>Uygulama herhangi bir bahis sitesi, bahis aracı veya kumar hizmeti içermez; bunlara yönlendirme yapmaz. Kullanıcının bu bilgileri kumar/bahis amaçlı kullanması <strong>tamamen kendi sorumluluğundadır</strong> ve Türkiye'de yasadışı bahse karşı düzenlenmiş yasalar gereği yasal sonuçlar doğurabilir (7258 sayılı Kanun).</p>
+      <p>Türkiye'de yalnızca <strong>Spor Toto Teşkilat Başkanlığı</strong> ve <strong>İddaa</strong> bayilikleri yasal bahis sağlayıcısıdır. Score AI hiçbir yasadışı bahis platformu ile bağlantılı değildir.</p>
+    </div>
+
+    <h2 id="s5"><span class="num">05</span>Uygunluk ve Yaş</h2>
+    <p>Uygulamayı kullanabilmek için <strong>en az 18 yaşında</strong> ve bulunduğunuz yargı bölgesinde sözleşme yapma ehliyetine sahip olmanız gerekir. 18 yaş altı kullanıcılar Hizmeti kullanamaz. Bu yaşın altındaysanız uygulamayı silmeli ve hesap oluşturmamalısınız.</p>
+
+    <h2 id="s6"><span class="num">06</span>Hesap Kaydı</h2>
     <ul>
-      <li>Doğru ve güncel bilgilerle hesap oluşturmakla yükümlüsünüz.</li>
-      <li>Hesap şifrenizin gizliliğinden ve hesabınızda gerçekleşen tüm işlemlerden sorumlusunuz.</li>
-      <li>Yetkisiz erişim fark ederseniz <a href="mailto:orkuneka@gmail.com">orkuneka@gmail.com</a> adresinden bize bildirin.</li>
+      <li>Hesabınızı doğru, güncel ve eksiksiz bilgilerle oluşturmakla yükümlüsünüz.</li>
+      <li>Hesap şifrenizin gizliliğinden ve hesabınız üzerinden gerçekleştirilen tüm işlemlerden sorumlusunuz.</li>
+      <li>Birden fazla hesap oluşturmak, başka bir kullanıcının hesabını kullanmak veya hesabınızı satmak yasaktır.</li>
+      <li>Yetkisiz erişim fark ederseniz derhal <a href="mailto:scoreailivematch@gmail.com">scoreailivematch@gmail.com</a> adresine bildirin.</li>
     </ul>
 
-    <h2>5. Abonelik ve Ödemeler</h2>
-    <h3>Abonelik Şartları</h3>
-    <ul>
-      <li>VIP Abonelik <strong>Apple App Store</strong> veya <strong>Google Play</strong> üzerinden satın alınır.</li>
-      <li>Ödeme, satın alma sırasında Apple ID veya Google hesabınızdan tahsil edilir.</li>
-      <li>Abonelik, mevcut dönem bitiminden en az 24 saat önce iptal edilmediği sürece <strong>otomatik olarak yenilenir</strong>.</li>
-      <li>Yenileme ücreti, mevcut dönemin bitiminden 24 saat önce hesabınıza yansıtılır.</li>
-      <li>Aboneliğinizi cihazınızın Hesap Ayarları → Abonelikler bölümünden yönetebilir ve iptal edebilirsiniz.</li>
-    </ul>
-
-    <h3>İade Politikası</h3>
-    <p>Abonelik iadeleri ilgili mağazanın (Apple App Store / Google Play) iade politikasına tabidir. Uygulama geliştiricisi olarak Apple/Google üzerinden yapılan satın almalar için doğrudan iade yapamayız.</p>
-
-    <h3>Kredi Sistemi</h3>
-    <p>Krediler; sanal, devredilemez ve geri ödenemez dijital varlıklardır. Krediler hesabınıza özeldir ve satılamaz, transfer edilemez, nakde çevrilemez.</p>
-
-    <h2>6. Ücretsiz Deneme</h2>
-    <p>Ücretsiz deneme süreci sunulduğu durumlarda, deneme süresi sonunda iptal etmezseniz abonelik otomatik olarak ücretli aboneliğe dönüşür. Ücret cihazınıza bağlı App Store/Play Store hesabından tahsil edilir.</p>
-
-    <h2>7. Yasaklı Kullanımlar</h2>
+    <h2 id="s7"><span class="num">07</span>Kullanıcı Davranış Kuralları</h2>
     <p>Uygulamayı kullanırken aşağıdakileri yapamazsınız:</p>
     <ul>
-      <li>Uygulamayı tersine mühendislik yapmak, parçalamak veya kaynak kodunu çıkarmak</li>
-      <li>Otomatik araçlar, botlar veya scraper'lar kullanarak Hizmete erişmek</li>
-      <li>Başka kullanıcıların hesaplarına izinsiz erişmek</li>
+      <li>Uygulamayı tersine mühendislik yapmak, decompile etmek, kaynak kodunu çıkarmak veya türev çalışma üretmek</li>
+      <li>Otomatik araçlar, botlar, scraper'lar veya komut dosyaları kullanarak Hizmete erişmek</li>
+      <li>Başka kullanıcıların hesaplarına izinsiz erişmek veya hesap bilgilerini almaya çalışmak</li>
       <li>Hizmeti yasadışı, dolandırıcılık amaçlı veya başkalarına zarar verecek şekilde kullanmak</li>
-      <li>Hizmetin altyapısına aşırı yük bindiren istekler göndermek</li>
-      <li>Telif hakkıyla korunan içerikleri izinsiz çoğaltmak veya dağıtmak</li>
+      <li>Hizmetin altyapısına aşırı yük bindiren, bozucu veya yıkıcı istekler göndermek</li>
+      <li>Telif hakkıyla korunan içerikleri izinsiz çoğaltmak, dağıtmak veya satmak</li>
+      <li>AI sohbet veya analiz özellikleri üzerinden nefret söylemi, ayrımcılık, taciz, şiddete teşvik içeren içerik üretmeye çalışmak</li>
     </ul>
 
-    <h2>8. Fikri Mülkiyet</h2>
-    <p>Uygulama, logosu, tasarımı, kaynak kodu ve içerikleri Score AI'a aittir ve fikri mülkiyet hukukuyla korunur. AI tarafından oluşturulan analiz çıktılarının kişisel kullanım hakkı size aittir; ticari amaçla yeniden satışı yasaktır.</p>
-
-    <h2>9. Hizmetin Değiştirilmesi & Sonlandırılması</h2>
-    <p>Hizmeti, özellikleri veya fiyatlandırmayı önceden bildirimle değiştirme hakkımız saklıdır. Bu Şartları ihlal etmeniz durumunda hesabınızı bildirimle veya bildirimsiz askıya alabilir ya da kapatabiliriz.</p>
-
-    <h2>10. Sorumluluğun Sınırlandırılması</h2>
-    <p>Uygulanabilir yasaların izin verdiği azami ölçüde, Score AI; doğrudan, dolaylı, arızi, özel veya sonuç olarak ortaya çıkan zararlardan (kazanç kaybı, veri kaybı, bahis kaybı dahil) sorumlu değildir. Toplam sorumluluğumuz, son 12 ay içinde tarafımıza ödediğiniz tutarı geçemez.</p>
-
-    <h2>11. Üçüncü Taraf Hizmetler</h2>
-    <p>Uygulama, Supabase, OpenAI, API-Sports, RevenueCat gibi üçüncü taraf hizmetlerini kullanır. Bu sağlayıcıların kendi şart ve politikaları geçerlidir. Detay için Gizlilik Politikamıza bakın.</p>
-
-    <h2>12. Uygulanacak Hukuk</h2>
-    <p>Bu Şartlar Türkiye Cumhuriyeti yasalarına tabidir. Doğabilecek uyuşmazlıklarda <strong>İstanbul Mahkemeleri ve İcra Daireleri</strong> yetkilidir.</p>
-
-    <h2>13. Değişiklikler</h2>
-    <p>Bu Şartları zaman zaman güncelleyebiliriz. Önemli değişiklikler uygulama içinden duyurulur. Güncellemeden sonra uygulamayı kullanmaya devam etmeniz, yeni şartları kabul ettiğiniz anlamına gelir.</p>
-
-    <h2>14. İletişim</h2>
-    <p>Sorularınız için: <a href="mailto:orkuneka@gmail.com">orkuneka@gmail.com</a></p>
-  </div>
-
-  <!-- EN -->
-  <div lang-en>
-    <h1>Terms of Use</h1>
-    <div class="updated">Effective date: May 14, 2026</div>
-
-    <p>These Terms of Use govern your use of the <strong>Score AI</strong> mobile application ("App" or "Service"). By downloading and using the App, you agree to these terms.</p>
-
-    <div class="callout-warning">
-      <p><strong>⚠️ Important Notice:</strong> Score AI <strong>does not provide betting advice</strong>. Analyses, predictions, and suggestions within the App are for informational purposes only and do not constitute investment, financial, or betting advice. AI outputs can be wrong; do not base financial decisions solely on them.</p>
-    </div>
-
-    <h2>1. Age Requirement</h2>
-    <p>You must be at least <strong>18 years old</strong> to use the App. Users under 18 may not use the Service. If you are under this age, you must delete the App and refrain from creating an account.</p>
-
-    <h2>2. Description of Service</h2>
-    <p>Score AI is a mobile application offering AI-powered analysis, predictions, coupon optimization, and a chat assistant for football matches. The Service has three components:</p>
+    <h2 id="s8"><span class="num">08</span>Abonelikler ve Otomatik Yenileme</h2>
+    <p>VIP Abonelik aşağıdaki şartlar altında sunulur:</p>
     <ul>
-      <li><strong>Free features:</strong> basic match data, limited analysis</li>
-      <li><strong>Credit system:</strong> analysis/chat allowances purchased one-time</li>
-      <li><strong>VIP Subscription:</strong> unlimited analyses, coupon optimization, and advanced AI features</li>
+      <li>Abonelik satın alımı <strong>Apple App Store</strong> veya <strong>Google Play Store</strong> üzerinden yapılır.</li>
+      <li>Ödeme, satın alma onayında <strong>Apple ID</strong> veya <strong>Google hesabınızdan</strong> tahsil edilir.</li>
+      <li>Abonelik, mevcut dönem bitiminden <strong>en az 24 saat önce iptal edilmediği sürece otomatik olarak yenilenir</strong>.</li>
+      <li>Yenileme ücreti, mevcut dönemin bitiminden <strong>24 saat öncesine kadar</strong> seçilen planın güncel fiyatı üzerinden hesabınıza yansıtılır.</li>
+      <li>Aboneliğinizi <strong>cihazınızın hesap ayarlarından</strong> (App Store → Apple ID → Abonelikler veya Google Play → Abonelikler) yönetebilir ve otomatik yenilemeyi kapatabilirsiniz.</li>
+      <li>Mevcut bir aboneliğiniz varken yeni abonelik satın alımı, ilgili mağazanın kurallarına tabidir.</li>
     </ul>
+    <p><strong>Abonelik kapsamı ve süresi:</strong> VIP Abonelik aylık veya yıllık olarak sunulur; aktif olduğu sürece sınırsız AI analiz, sınırsız kupon değerlendirmesi ve sınırsız AI sohbet erişimi sağlar. Plan detayları ve güncel fiyatlandırma uygulama içinde gösterilir.</p>
 
-    <h2>3. AI Output & Disclaimer</h2>
-    <div class="callout">
-      <p>All analyses, predictions, and suggestions generated by Score AI are produced by <strong>AI models using probabilistic methods</strong> and carry <strong>no guarantee of accuracy</strong>. Forecasts use past stats, current form, and other data, but sports outcomes are inherently unpredictable. <strong>You are solely responsible</strong> for any decisions you make based on AI outputs.</p>
-    </div>
-
-    <h2>4. Account & Security</h2>
+    <h2 id="s9"><span class="num">09</span>Krediler (Tek Seferlik Alımlar)</h2>
+    <p>Kredi paketi satın alımlarıyla edinilen krediler:</p>
     <ul>
-      <li>You must create your account with accurate, up-to-date information.</li>
-      <li>You are responsible for the confidentiality of your password and all activity under your account.</li>
-      <li>Notify us at <a href="mailto:orkuneka@gmail.com">orkuneka@gmail.com</a> of any unauthorized access.</li>
+      <li>Sanal, devredilemez ve geri ödenemez dijital varlıklardır.</li>
+      <li>Yalnızca hesabınızda kullanılabilir; satılamaz, transfer edilemez, nakde çevrilemez.</li>
+      <li>Hesap kapatılması veya silinmesi durumunda kullanılmamış krediler kaybolur.</li>
+      <li>Krediler kullanıldıktan veya hesap silindikten sonra <strong>iadesi yapılmaz</strong>.</li>
     </ul>
 
-    <h2>5. Subscriptions and Payments</h2>
-    <h3>Subscription Terms</h3>
+    <h2 id="s10"><span class="num">10</span>Ücretsiz Deneme</h2>
+    <p>Ücretsiz deneme süreci sunulduğunda:</p>
     <ul>
-      <li>VIP Subscription is purchased through the <strong>Apple App Store</strong> or <strong>Google Play</strong>.</li>
-      <li>Payment is charged to your Apple ID or Google account at purchase.</li>
-      <li>Subscriptions <strong>renew automatically</strong> unless cancelled at least 24 hours before the current period ends.</li>
-      <li>Renewal is charged 24 hours before the end of the current period.</li>
-      <li>You can manage and cancel your subscription from your device's Account Settings → Subscriptions.</li>
+      <li>Deneme süresinin sonunda iptal edilmemişse abonelik <strong>otomatik olarak ücretli aboneliğe dönüşür</strong>.</li>
+      <li>Ücret, cihazınıza bağlı App Store/Play Store hesabından tahsil edilir.</li>
+      <li>Deneme süresi yalnızca her kullanıcıya bir kez tanımlanır.</li>
+      <li>Deneme süresi içinde iptal: abonelik ayarlarınızdan en az 24 saat önce yapmalısınız.</li>
     </ul>
 
-    <h3>Refund Policy</h3>
-    <p>Subscription refunds are subject to the refund policy of the respective store (Apple App Store / Google Play). As the developer, we cannot directly refund purchases made through Apple/Google.</p>
-
-    <h3>Credit System</h3>
-    <p>Credits are virtual, non-transferable, non-refundable digital assets. Credits are tied to your account and may not be sold, transferred, or converted to cash.</p>
-
-    <h2>6. Free Trial</h2>
-    <p>Where a free trial is offered, the subscription automatically converts to a paid subscription at the end of the trial unless cancelled. Charges are billed to the App Store/Play Store account on your device.</p>
-
-    <h2>7. Prohibited Use</h2>
-    <p>You may not:</p>
+    <h2 id="s11"><span class="num">11</span>İptal ve İade</h2>
+    <p><strong>İptal:</strong> Aboneliğinizi cihazınızın hesap ayarlarından istediğiniz zaman iptal edebilirsiniz. İptal mevcut dönem sonunda yürürlüğe girer; o ana kadar erişiminiz devam eder.</p>
+    <p><strong>İade:</strong> Abonelik iadeleri ilgili mağazanın (Apple App Store / Google Play) iade politikasına tabidir:</p>
     <ul>
-      <li>Reverse engineer, decompile, or extract the source code of the App</li>
-      <li>Use automated tools, bots, or scrapers to access the Service</li>
-      <li>Access other users' accounts without permission</li>
-      <li>Use the Service for unlawful, fraudulent, or harmful purposes</li>
-      <li>Send requests that overload the Service infrastructure</li>
-      <li>Reproduce or distribute copyrighted content without permission</li>
+      <li>Apple iade talebi: <a href="https://reportaproblem.apple.com/" target="_blank" rel="noopener">reportaproblem.apple.com</a></li>
+      <li>Google iade talebi: Play Store → Hesap → Sipariş geçmişi</li>
+    </ul>
+    <p>Uygulama geliştiricisi olarak Apple/Google üzerinden yapılan satın almalar için <strong>doğrudan iade yapamayız</strong>; iade kararları ilgili mağazanın takdirindedir.</p>
+
+    <h2 id="s12"><span class="num">12</span>Satın Alma Geri Yükleme</h2>
+    <p>Uygulamayı yeniden yüklediğinizde veya cihazınızı değiştirdiğinizde mevcut aboneliğinizi/satın almalarınızı uygulama içindeki <strong>"Satın Alımları Geri Yükle"</strong> seçeneği ile geri yükleyebilirsiniz (Profil → Abonelik). Sistem, Apple ID/Google hesabınıza bağlı mevcut satın almaları otomatik tanır.</p>
+
+    <h2 id="s13"><span class="num">13</span>Fiyat Değişiklikleri</h2>
+    <p>Abonelik fiyatlarını değiştirme hakkımız saklıdır. Fiyat artışları <strong>en az 30 gün öncesinden</strong> uygulama içinden ve/veya e-posta ile bildirilir. Yeni fiyat sonraki yenileme döneminde geçerli olur. Yeni fiyatı kabul etmek istemiyorsanız aboneliğinizi yürürlük tarihinden önce iptal edebilirsiniz.</p>
+
+    <h2 id="s14"><span class="num">14</span>Fikri Mülkiyet</h2>
+    <p>Uygulama, logosu, tasarımı, kaynak kodu, içerikleri, AI üretimi şablonları ve bunlara ilişkin tüm fikri mülkiyet hakları <strong>Score AI</strong>'ya aittir ve telif hakkı, ticari marka ve diğer fikri mülkiyet hukuku ile korunur.</p>
+    <p>AI tarafından oluşturulan analiz çıktılarının kişisel kullanım hakkı size aittir; ticari amaçla yeniden satılması, ücretli platformlarda yayınlanması veya kitlesel dağıtımı yasaktır.</p>
+
+    <h2 id="s15"><span class="num">15</span>Lisans Hakkı</h2>
+    <p>Score AI, bu Şartlara uymanız koşuluyla, uygulamayı kişisel ve ticari olmayan amaçlarla kullanmanız için size <strong>sınırlı, kişisel, devredilemez, münhasır olmayan ve geri alınabilir</strong> bir lisans verir. Lisans hak devri içermez; uygulamadaki tüm haklar saklıdır.</p>
+
+    <h2 id="s16"><span class="num">16</span>Hizmetin Sonlandırılması</h2>
+    <p>Bu Şartları ihlal etmeniz durumunda hesabınızı <strong>bildirimle veya bildirimsiz</strong> askıya alma veya kapatma hakkımız saklıdır. Hesabınızı istediğiniz zaman uygulama içinden silebilirsiniz (Profil → Ayarlar → Hesabı Sil). Hesap kapatma; ödenmemiş ücretler veya yasal yükümlülükler dahil önceki edimleri ortadan kaldırmaz.</p>
+
+    <h2 id="s17"><span class="num">17</span>Garanti Reddi</h2>
+    <p>Hizmet <strong>"olduğu gibi" ve "mevcut olduğu şekilde"</strong> sunulur. Uygulanabilir yasaların izin verdiği azami ölçüde, Score AI; satılabilirlik, belirli bir amaca uygunluk, doğruluk, kesintisizlik, hatasızlık veya ihlal etmeme dahil olmak üzere açık veya zımni hiçbir garanti vermez.</p>
+
+    <h2 id="s18"><span class="num">18</span>Sorumluluk Sınırlandırması</h2>
+    <p>Uygulanabilir yasaların izin verdiği azami ölçüde, Score AI; doğrudan, dolaylı, arızi, özel, cezalandırıcı veya sonuç olarak ortaya çıkan zararlardan (kâr kaybı, veri kaybı, bahis kaybı, kullanım kaybı, itibar kaybı dahil ancak bunlarla sınırlı olmamak üzere) sorumlu değildir.</p>
+    <p>Tüm taleplere ilişkin toplam sorumluluğumuz, son 12 ay içinde tarafımıza ödediğiniz tutarı veya 100 ABD Dolarını (hangisi yüksekse) <strong>geçemez</strong>.</p>
+
+    <h2 id="s19"><span class="num">19</span>Apple-Spesifik Şartlar</h2>
+    <p>Uygulamayı Apple App Store'dan indirdiyseniz aşağıdaki ek şartlar geçerlidir:</p>
+    <ul>
+      <li>Bu Şartlar yalnızca Score AI ile sizin aranızda akdedilmiştir; Apple bu sözleşmenin tarafı değildir.</li>
+      <li>Apple'ın uygulamaya ilişkin destek veya bakım sağlama yükümlülüğü yoktur.</li>
+      <li>Uygulamadaki ürün garantisi taleplerinizden Apple sorumlu tutulamaz.</li>
+      <li>Üçüncü taraf fikri mülkiyet ihlali iddiaları yalnızca Score AI'nın sorumluluğundadır.</li>
+      <li>Apple ve iştirakleri bu Şartların üçüncü taraf yararlanıcılarıdır ve şartları uygulama hakkına sahiptir.</li>
+      <li>Uygulamayı, ABD hükümetinin ambargo uyguladığı veya "terörist destekçisi ülkeler" olarak belirlediği bir ülkede kullanmadığınızı beyan edersiniz.</li>
     </ul>
 
-    <h2>8. Intellectual Property</h2>
-    <p>The App, its logo, design, source code, and content belong to Score AI and are protected by intellectual property law. You retain a personal-use right to AI-generated analyses; commercial resale is prohibited.</p>
+    <h2 id="s20"><span class="num">20</span>Uygulanacak Hukuk ve Uyuşmazlık Çözümü</h2>
+    <p>Bu Şartlar <strong>Türkiye Cumhuriyeti yasalarına</strong> tabidir ve bu yasalara göre yorumlanır. Bu Şartlardan kaynaklanan veya bunlarla bağlantılı tüm uyuşmazlıklarda <strong>İstanbul Mahkemeleri ve İcra Daireleri</strong> münhasıran yetkilidir.</p>
+    <p>Tüketici niteliğindeki kullanıcılar için, ikamet yargı yerindeki tüketici mahkemelerine başvurma hakkı saklıdır.</p>
 
-    <h2>9. Modification & Termination</h2>
-    <p>We reserve the right to modify the Service, its features, or pricing with prior notice. We may suspend or terminate your account, with or without notice, if you breach these Terms.</p>
+    <h2 id="s21"><span class="num">21</span>Şartların Değişmesi</h2>
+    <p>Bu Şartları zaman zaman güncelleyebiliriz. <strong>Önemli değişiklikler</strong> en az <strong>30 gün öncesinden</strong> uygulama içi bildirim veya e-posta ile duyurulur. Güncelleme sonrası uygulamayı kullanmaya devam etmeniz yeni Şartları kabul ettiğiniz anlamına gelir. Güncel sürüm her zaman <a href="https://scoreailive.github.io/terms.html">scoreailive.github.io/terms.html</a> adresinde yayınlanır.</p>
 
-    <h2>10. Limitation of Liability</h2>
-    <p>To the maximum extent permitted by law, Score AI is not liable for any direct, indirect, incidental, special, or consequential damages (including loss of profit, data loss, or betting losses). Our total liability shall not exceed the amount you paid us in the last 12 months.</p>
+    <h2 id="s22"><span class="num">22</span>İletişim</h2>
+    <p>Tüm soru, talep ve bildirimleriniz için:</p>
+    <ul>
+      <li><strong>E-posta:</strong> <a href="mailto:scoreailivematch@gmail.com">scoreailivematch@gmail.com</a></li>
+      <li><strong>Web:</strong> <a href="https://scoreailive.github.io/">scoreailive.github.io</a></li>
+      <li><strong>Yanıt süresi:</strong> En geç 7 iş günü</li>
+    </ul>
 
-    <h2>11. Third-Party Services</h2>
-    <p>The App uses third-party services such as Supabase, OpenAI, API-Sports, and RevenueCat. Their own terms and policies apply. See our Privacy Policy for details.</p>
-
-    <h2>12. Governing Law</h2>
-    <p>These Terms are governed by the laws of the Republic of Türkiye. Any disputes shall be resolved by the <strong>Courts of Istanbul</strong>.</p>
-
-    <h2>13. Changes</h2>
-    <p>We may update these Terms from time to time. Material changes will be announced in-app. Continued use after an update means you accept the new terms.</p>
-
-    <h2>14. Contact</h2>
-    <p>For questions: <a href="mailto:orkuneka@gmail.com">orkuneka@gmail.com</a></p>
-  </div>
-
-  <footer>
-    <div>
-      <a href="index.html" lang-tr>Ana Sayfa</a>
-      <a href="index.html" lang-en>Home</a>
-      <a href="privacy.html" lang-tr>Gizlilik Politikası</a>
-      <a href="privacy.html" lang-en>Privacy Policy</a>
-    </div>
-    <div style="margin-top:12px;" lang-tr>© 2026 Score AI</div>
-    <div style="margin-top:12px;" lang-en>© 2026 Score AI</div>
-  </footer>
+  </section>
 </div>
 
+<!-- ════════ EN ════════ -->
+<div data-lang="en">
+  <section class="doc-hero">
+    <h1>Terms of Use</h1>
+    <div class="doc-meta">
+      <span class="doc-meta-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+        EULA v1.0
+      </span>
+      <span>Effective: May 14, 2026</span>
+      <span class="doc-meta-dot"></span>
+      <span>Last updated: May 14, 2026</span>
+    </div>
+  </section>
+
+  <div class="callout warn">
+    <div class="callout-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      Important Notice
+    </div>
+    <p>Score AI <strong>does not provide betting advice</strong>. Analyses, predictions, and suggestions in the App are <strong>for informational purposes only</strong> and do not constitute investment, financial, or betting advice. AI outputs can be wrong; do not base financial decisions solely on them. <strong>The user is solely responsible for any betting decisions and outcomes.</strong></p>
+  </div>
+
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      Contents
+    </div>
+    <ol class="toc-list">
+      <li><a href="#e1"><span class="n">01</span>Acceptance of Terms</a></li>
+      <li><a href="#e2"><span class="n">02</span>Description of Service</a></li>
+      <li><a href="#e3"><span class="n">03</span>AI Disclaimer</a></li>
+      <li><a href="#e4"><span class="n">04</span>Not Betting Advice</a></li>
+      <li><a href="#e5"><span class="n">05</span>Eligibility & Age</a></li>
+      <li><a href="#e6"><span class="n">06</span>Account Registration</a></li>
+      <li><a href="#e7"><span class="n">07</span>User Conduct</a></li>
+      <li><a href="#e8"><span class="n">08</span>Subscriptions & Auto-Renewal</a></li>
+      <li><a href="#e9"><span class="n">09</span>Credits (One-Time Purchases)</a></li>
+      <li><a href="#e10"><span class="n">10</span>Free Trial</a></li>
+      <li><a href="#e11"><span class="n">11</span>Cancellation & Refunds</a></li>
+      <li><a href="#e12"><span class="n">12</span>Restoring Purchases</a></li>
+      <li><a href="#e13"><span class="n">13</span>Price Changes</a></li>
+      <li><a href="#e14"><span class="n">14</span>Intellectual Property</a></li>
+      <li><a href="#e15"><span class="n">15</span>License Grant</a></li>
+      <li><a href="#e16"><span class="n">16</span>Termination</a></li>
+      <li><a href="#e17"><span class="n">17</span>Disclaimer of Warranties</a></li>
+      <li><a href="#e18"><span class="n">18</span>Limitation of Liability</a></li>
+      <li><a href="#e19"><span class="n">19</span>Apple-Specific Terms</a></li>
+      <li><a href="#e20"><span class="n">20</span>Governing Law</a></li>
+      <li><a href="#e21"><span class="n">21</span>Changes to Terms</a></li>
+      <li><a href="#e22"><span class="n">22</span>Contact</a></li>
+    </ol>
+  </nav>
+
+  <section class="doc-content">
+
+    <h2 id="e1"><span class="num">01</span>Acceptance of Terms</h2>
+    <p>These Terms of Use ("Terms" or "EULA") form a legal agreement governing your use of the <strong>Score AI — Live Match Analysis</strong> mobile application ("App" or "Service"). By downloading, installing, or using the App, you agree to these Terms. If you do not agree, you must not use the App.</p>
+
+    <h2 id="e2"><span class="num">02</span>Description of Service</h2>
+    <p>Score AI is a mobile application offering AI-powered analysis, predictions, coupon evaluation, and a chat assistant for football matches. The Service consists of three tiers:</p>
+    <ul>
+      <li><strong>Free features:</strong> basic match data, limited analysis allowances</li>
+      <li><strong>Credit system:</strong> analysis/chat allowances purchased one-time</li>
+      <li><strong>VIP Subscription:</strong> unlimited analysis, coupon evaluation, and advanced AI features</li>
+    </ul>
+
+    <h2 id="e3"><span class="num">03</span>AI Disclaimer</h2>
+    <div class="callout">
+      <p>All analyses, predictions, and suggestions generated by Score AI are produced by <strong>AI models using probabilistic methods</strong> and carry <strong>no guarantee of accuracy</strong>. Forecasts are generated based on historical statistics, current form, and other data; however, the outcomes of sports events are inherently unpredictable.</p>
+      <p><strong>You are solely responsible</strong> for any decisions you make based on AI outputs. Score AI and its developers make no warranty as to the accuracy, completeness, or fitness for a particular purpose of AI outputs.</p>
+      <p>If you encounter inappropriate, incorrect, or harmful AI content, please report it to <a href="mailto:scoreailivematch@gmail.com">scoreailivematch@gmail.com</a>.</p>
+    </div>
+
+    <h2 id="e4"><span class="num">04</span>Not Betting Advice</h2>
+    <div class="callout warn">
+      <p><strong>SCORE AI IS NOT A BETTING PLATFORM AND DOES NOT PROVIDE BETTING ADVICE.</strong> Our service provides information and forecasts about football matches for statistical analysis and educational purposes.</p>
+      <p>The App does not contain any betting site, betting tool, or gambling service, nor does it redirect to such services. Any use of this information for gambling/betting purposes is <strong>solely the user's responsibility</strong> and may have legal consequences under applicable laws (in Türkiye, Law No. 7258).</p>
+      <p>In Türkiye, only <strong>Spor Toto</strong> and <strong>İddaa</strong> dealerships are licensed betting providers. Score AI is not affiliated with any illegal betting platform.</p>
+    </div>
+
+    <h2 id="e5"><span class="num">05</span>Eligibility & Age</h2>
+    <p>You must be at least <strong>18 years old</strong> and have the legal capacity to enter into contracts in your jurisdiction. Users under 18 may not use the Service. If you are under this age, you must delete the App and refrain from creating an account.</p>
+
+    <h2 id="e6"><span class="num">06</span>Account Registration</h2>
+    <ul>
+      <li>You must create your account with accurate, current, and complete information.</li>
+      <li>You are responsible for the confidentiality of your password and all activities under your account.</li>
+      <li>Creating multiple accounts, using another user's account, or selling your account is prohibited.</li>
+      <li>Notify us at <a href="mailto:scoreailivematch@gmail.com">scoreailivematch@gmail.com</a> immediately of any unauthorized access.</li>
+    </ul>
+
+    <h2 id="e7"><span class="num">07</span>User Conduct</h2>
+    <p>You may not:</p>
+    <ul>
+      <li>Reverse engineer, decompile, extract source code, or create derivative works of the App</li>
+      <li>Use automated tools, bots, scrapers, or scripts to access the Service</li>
+      <li>Access other users' accounts without permission or attempt to obtain account credentials</li>
+      <li>Use the Service for unlawful, fraudulent, or harmful purposes</li>
+      <li>Send requests that overload, disrupt, or impair the Service infrastructure</li>
+      <li>Reproduce, distribute, or sell copyrighted content without permission</li>
+      <li>Attempt to generate content via AI chat or analysis features that includes hate speech, discrimination, harassment, or incitement to violence</li>
+    </ul>
+
+    <h2 id="e8"><span class="num">08</span>Subscriptions & Auto-Renewal</h2>
+    <p>VIP Subscription is offered under the following terms:</p>
+    <ul>
+      <li>Subscription purchases are made through the <strong>Apple App Store</strong> or <strong>Google Play Store</strong>.</li>
+      <li>Payment will be charged to your <strong>Apple ID</strong> or <strong>Google account</strong> at confirmation of purchase.</li>
+      <li>Your subscription <strong>automatically renews unless auto-renew is turned off at least 24 hours before the end of the current period</strong>.</li>
+      <li>Your account will be charged for renewal <strong>within 24 hours prior to the end of the current period</strong> at the current price of the chosen plan.</li>
+      <li>You can manage your subscription and turn off auto-renewal by going to <strong>your device account settings</strong> (App Store → Apple ID → Subscriptions, or Google Play → Subscriptions) after purchase.</li>
+      <li>Purchasing a new subscription while one is active is subject to the relevant store's rules.</li>
+    </ul>
+    <p><strong>Subscription scope and duration:</strong> VIP Subscription is offered on a monthly or yearly basis; while active, it provides unlimited AI analysis, unlimited coupon evaluation, and unlimited AI chat access. Plan details and current pricing are shown in the App.</p>
+
+    <h2 id="e9"><span class="num">09</span>Credits (One-Time Purchases)</h2>
+    <p>Credits purchased through credit packages are:</p>
+    <ul>
+      <li>Virtual, non-transferable, non-refundable digital assets.</li>
+      <li>Usable only in your account; may not be sold, transferred, or converted to cash.</li>
+      <li>Forfeited if your account is closed or deleted (any unused credits are lost).</li>
+      <li><strong>Non-refundable</strong> once used or after account deletion.</li>
+    </ul>
+
+    <h2 id="e10"><span class="num">10</span>Free Trial</h2>
+    <p>Where a free trial is offered:</p>
+    <ul>
+      <li>The subscription <strong>automatically converts to a paid subscription</strong> at the end of the trial unless cancelled.</li>
+      <li>Charges are billed to your App Store/Play Store account on your device.</li>
+      <li>A free trial is offered only once per user.</li>
+      <li>To cancel before the trial ends, do so at least 24 hours before in your subscription settings.</li>
+    </ul>
+
+    <h2 id="e11"><span class="num">11</span>Cancellation & Refunds</h2>
+    <p><strong>Cancellation:</strong> You may cancel your subscription at any time via your device's account settings. Cancellation takes effect at the end of the current period; you retain access until then.</p>
+    <p><strong>Refunds:</strong> Subscription refunds are subject to the refund policy of the relevant store (Apple App Store / Google Play):</p>
+    <ul>
+      <li>Apple refund request: <a href="https://reportaproblem.apple.com/" target="_blank" rel="noopener">reportaproblem.apple.com</a></li>
+      <li>Google refund request: Play Store → Account → Order history</li>
+    </ul>
+    <p>As the developer, <strong>we cannot directly refund</strong> purchases made through Apple/Google; refund decisions are at the discretion of the relevant store.</p>
+
+    <h2 id="e12"><span class="num">12</span>Restoring Purchases</h2>
+    <p>When you reinstall the App or switch devices, you can restore your subscription/purchases using the <strong>"Restore Purchases"</strong> option in the app (Profile → Subscription). The system automatically detects existing purchases tied to your Apple ID/Google account.</p>
+
+    <h2 id="e13"><span class="num">13</span>Price Changes</h2>
+    <p>We reserve the right to change subscription prices. Price increases are notified <strong>at least 30 days in advance</strong> in-app and/or via email. New prices apply at the next renewal period. If you do not accept the new price, you may cancel your subscription before the effective date.</p>
+
+    <h2 id="e14"><span class="num">14</span>Intellectual Property</h2>
+    <p>The App, its logo, design, source code, content, AI prompt templates, and all related intellectual property rights belong to <strong>Score AI</strong> and are protected by copyright, trademark, and other intellectual property laws.</p>
+    <p>You retain a personal-use right to AI-generated analyses; commercial resale, publication on paid platforms, or mass distribution is prohibited.</p>
+
+    <h2 id="e15"><span class="num">15</span>License Grant</h2>
+    <p>Subject to your compliance with these Terms, Score AI grants you a <strong>limited, personal, non-transferable, non-exclusive, and revocable</strong> license to use the App for personal, non-commercial purposes. The license does not include any right of transfer; all rights in the App are reserved.</p>
+
+    <h2 id="e16"><span class="num">16</span>Termination</h2>
+    <p>We reserve the right to suspend or terminate your account, <strong>with or without notice</strong>, if you breach these Terms. You may delete your account at any time from within the App (Profile → Settings → Delete Account). Termination does not extinguish prior obligations, including unpaid fees or legal obligations.</p>
+
+    <h2 id="e17"><span class="num">17</span>Disclaimer of Warranties</h2>
+    <p>The Service is provided <strong>"as is" and "as available"</strong>. To the maximum extent permitted by applicable law, Score AI makes no warranties, express or implied, including merchantability, fitness for a particular purpose, accuracy, uninterrupted access, error-free operation, or non-infringement.</p>
+
+    <h2 id="e18"><span class="num">18</span>Limitation of Liability</h2>
+    <p>To the maximum extent permitted by applicable law, Score AI is not liable for any direct, indirect, incidental, special, punitive, or consequential damages (including but not limited to loss of profit, data loss, betting losses, loss of use, or loss of reputation).</p>
+    <p>Our total liability for all claims shall <strong>not exceed</strong> the amount you paid us in the last 12 months or USD $100, whichever is greater.</p>
+
+    <h2 id="e19"><span class="num">19</span>Apple-Specific Terms</h2>
+    <p>If you downloaded the App from the Apple App Store, the following additional terms apply:</p>
+    <ul>
+      <li>These Terms are between Score AI and you only; Apple is not a party to this agreement.</li>
+      <li>Apple has no obligation to provide support or maintenance for the App.</li>
+      <li>Apple is not responsible for any product warranty claims related to the App.</li>
+      <li>Third-party intellectual property infringement claims are solely Score AI's responsibility.</li>
+      <li>Apple and its subsidiaries are third-party beneficiaries of these Terms and may enforce them.</li>
+      <li>You represent that you are not located in a country subject to U.S. government embargo or designated as "terrorist supporting".</li>
+    </ul>
+
+    <h2 id="e20"><span class="num">20</span>Governing Law & Dispute Resolution</h2>
+    <p>These Terms are governed by and construed in accordance with the laws of the <strong>Republic of Türkiye</strong>. All disputes arising out of or in connection with these Terms shall be subject to the exclusive jurisdiction of the <strong>Courts of Istanbul</strong>.</p>
+    <p>For users who qualify as consumers, the right to file a claim in their local consumer courts is reserved.</p>
+
+    <h2 id="e21"><span class="num">21</span>Changes to Terms</h2>
+    <p>We may update these Terms from time to time. <strong>Material changes</strong> are announced via in-app notification or email at least <strong>30 days in advance</strong>. Continued use of the App after an update means you accept the new Terms. The current version is always published at <a href="https://scoreailive.github.io/terms.html">scoreailive.github.io/terms.html</a>.</p>
+
+    <h2 id="e22"><span class="num">22</span>Contact</h2>
+    <p>For all questions, requests, and notices:</p>
+    <ul>
+      <li><strong>Email:</strong> <a href="mailto:scoreailivematch@gmail.com">scoreailivematch@gmail.com</a></li>
+      <li><strong>Web:</strong> <a href="https://scoreailive.github.io/">scoreailive.github.io</a></li>
+      <li><strong>Response time:</strong> within 7 business days</li>
+    </ul>
+
+  </section>
+</div>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <img src="logo.png" alt="" />
+      <span>Score AI · Live Match Analysis</span>
+    </div>
+    <div class="foot-links">
+      <a href="index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        <span data-lang="tr">Ana Sayfa</span><span data-lang="en">Home</span>
+      </a>
+      <a href="privacy.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span data-lang="tr">Gizlilik</span><span data-lang="en">Privacy</span>
+      </a>
+      <a href="mailto:scoreailivematch@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span data-lang="tr">İletişim</span><span data-lang="en">Contact</span>
+      </a>
+    </div>
+  </div>
+  <div class="foot-copy">
+    <span data-lang="tr">© 2026 Score AI · Tüm hakları saklıdır. · Bu bir bahis tavsiyesi değildir.</span>
+    <span data-lang="en">© 2026 Score AI · All rights reserved. · This is not betting advice.</span>
+  </div>
+</footer>
+
 <script>
-  function setLang(lang) {
-    document.body.classList.toggle('en', lang === 'en');
-    document.documentElement.lang = lang;
-    document.getElementById('btn-tr').classList.toggle('active', lang === 'tr');
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-    try { localStorage.setItem('scoreai-lang', lang); } catch(e) {}
-  }
-  try {
-    const saved = localStorage.getItem('scoreai-lang');
-    if (saved) setLang(saved);
-    else if ((navigator.language || '').toLowerCase().startsWith('en')) setLang('en');
-  } catch(e) {}
+  (function() {
+    const STORAGE_KEY = 'scoreai-lang';
+    function setLang(lang) {
+      if (lang !== 'tr' && lang !== 'en') lang = 'tr';
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-lang-btn]').forEach(function(b) {
+        b.classList.toggle('on', b.getAttribute('data-lang-btn') === lang);
+      });
+      try { localStorage.setItem(STORAGE_KEY, lang); } catch(e) {}
+    }
+    let initial;
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved === 'tr' || saved === 'en') initial = saved;
+    } catch(e) {}
+    if (!initial) {
+      initial = (navigator.language || '').toLowerCase().startsWith('tr') ? 'tr' : 'en';
+    }
+    setLang(initial);
+    document.querySelectorAll('[data-lang-btn]').forEach(function(b) {
+      b.addEventListener('click', function() { setLang(b.getAttribute('data-lang-btn')); });
+    });
+  })();
 </script>
 </body>
 </html>
