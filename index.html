@@ -1,1 +1,211 @@
 
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Score AI — AI Destekli Maç Analizi</title>
+<meta name="description" content="Score AI — Yapay zeka destekli maç analiz ve tahmin uygulaması. Canlı veriler, akıllı kupon optimizasyonu, AI sohbet asistanı." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0A0E1A;
+    color: #FFFFFF;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  .bg-glow {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(60% 50% at 20% 10%, rgba(0,245,160,0.10), transparent 60%),
+      radial-gradient(50% 40% at 90% 30%, rgba(59,130,246,0.12), transparent 60%);
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 24px 0;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 12px;
+    font-weight: 800; font-size: 20px; letter-spacing: -0.02em;
+  }
+  .logo-dot {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: linear-gradient(135deg, #00F5A0 0%, #3B82F6 100%);
+    box-shadow: 0 0 24px rgba(0,245,160,0.35);
+  }
+  .lang-toggle {
+    display: flex; gap: 4px; padding: 4px;
+    background: #121829; border: 1px solid #1E293B; border-radius: 999px;
+  }
+  .lang-toggle button {
+    background: transparent; color: #9CA3AF; border: 0;
+    padding: 6px 14px; border-radius: 999px;
+    font-family: inherit; font-size: 13px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .lang-toggle button.active { background: #00F5A0; color: #0A0E1A; }
+  .hero { padding: 80px 0 60px; text-align: center; }
+  .badge {
+    display: inline-block;
+    padding: 6px 14px; margin-bottom: 24px;
+    background: rgba(0,245,160,0.10); color: #00F5A0;
+    border: 1px solid rgba(0,245,160,0.25); border-radius: 999px;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
+  }
+  h1 {
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 800; letter-spacing: -0.03em; line-height: 1.05;
+    margin-bottom: 20px;
+  }
+  h1 .accent {
+    background: linear-gradient(135deg, #00F5A0 0%, #3B82F6 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero p {
+    font-size: 18px; color: #9CA3AF;
+    max-width: 620px; margin: 0 auto 40px;
+  }
+  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 24px; border-radius: 12px;
+    font-family: inherit; font-size: 15px; font-weight: 600;
+    text-decoration: none; transition: all 0.2s; cursor: pointer; border: 0;
+  }
+  .btn-primary { background: #00F5A0; color: #0A0E1A; }
+  .btn-primary:hover { box-shadow: 0 8px 32px rgba(0,245,160,0.35); transform: translateY(-1px); }
+  .btn-ghost { background: transparent; color: #FFFFFF; border: 1px solid #1E293B; }
+  .btn-ghost:hover { border-color: #00F5A0; color: #00F5A0; }
+  .features {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px; padding: 40px 0 80px;
+  }
+  .feature {
+    background: #1A2035; border: 1px solid #1E293B; border-radius: 16px;
+    padding: 24px; transition: all 0.25s;
+  }
+  .feature:hover { border-color: rgba(0,245,160,0.4); transform: translateY(-2px); }
+  .feature-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: rgba(0,245,160,0.10); color: #00F5A0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 16px;
+  }
+  .feature h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .feature p { font-size: 14px; color: #9CA3AF; }
+  footer {
+    border-top: 1px solid #1E293B; padding: 32px 0;
+    text-align: center; color: #9CA3AF; font-size: 14px;
+  }
+  footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+  footer a { color: #9CA3AF; text-decoration: none; transition: color 0.2s; }
+  footer a:hover { color: #00F5A0; }
+  [lang-en] { display: none; }
+  body.en [lang-tr] { display: none; }
+  body.en [lang-en] { display: initial; }
+  body.en .feature [lang-en] { display: block; }
+  body.en .hero [lang-en] { display: block; }
+  @media (max-width: 600px) {
+    .hero { padding: 48px 0 32px; }
+  }
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+<div class="container">
+  <nav>
+    <div class="logo">
+      <div class="logo-dot"></div>
+      <span>Score AI</span>
+    </div>
+    <div class="lang-toggle">
+      <button id="btn-tr" class="active" onclick="setLang('tr')">TR</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <span class="badge" lang-tr>YAPAY ZEKÂ DESTEKLİ</span>
+    <span class="badge" lang-en>AI-POWERED</span>
+
+    <h1 lang-tr>Maçları daha akıllı<br /><span class="accent">analiz et</span>.</h1>
+    <h1 lang-en>Smarter football<br /><span class="accent">analysis</span>.</h1>
+
+    <p lang-tr>Score AI; canlı veriler, gerçek zamanlı form analizi ve gelişmiş yapay zekâ modelleri ile maçları derinlemesine inceler. Bu bir bahis tavsiyesi değildir.</p>
+    <p lang-en>Score AI analyzes football matches using live data, real-time form analysis, and advanced AI models. This is not betting advice.</p>
+
+    <div class="cta-row">
+      <a href="privacy.html" class="btn btn-primary" lang-tr>Gizlilik Politikası</a>
+      <a href="privacy.html" class="btn btn-primary" lang-en>Privacy Policy</a>
+      <a href="terms.html" class="btn btn-ghost" lang-tr>Kullanım Şartları</a>
+      <a href="terms.html" class="btn btn-ghost" lang-en>Terms of Use</a>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <div class="feature-icon">⚡</div>
+      <h3 lang-tr>AI Maç Analizi</h3>
+      <h3 lang-en>AI Match Analysis</h3>
+      <p lang-tr>Form, kafa kafaya, sakat oyuncular ve istatistikler ile yapay zekâ destekli detaylı analiz.</p>
+      <p lang-en>In-depth AI analysis using form, head-to-head, injuries and stats.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">📊</div>
+      <h3 lang-tr>Canlı Veriler</h3>
+      <h3 lang-en>Live Data</h3>
+      <p lang-tr>Önde gelen liglerden canlı skor, olay ve istatistik akışı.</p>
+      <p lang-en>Live scores, events and statistics from top leagues.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🎯</div>
+      <h3 lang-tr>Kupon Optimizasyonu</h3>
+      <h3 lang-en>Coupon Optimizer</h3>
+      <p lang-tr>Kuponunu yapay zekâ ile değerlendir, alternatif kombinasyonları gör.</p>
+      <p lang-en>Evaluate your coupon with AI, view alternative combinations.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">💬</div>
+      <h3 lang-tr>AI Sohbet</h3>
+      <h3 lang-en>AI Chat</h3>
+      <p lang-tr>Maçlar, takımlar ve istatistikler hakkında AI asistanına sor.</p>
+      <p lang-en>Ask the AI assistant about matches, teams and stats.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="links">
+      <a href="privacy.html" lang-tr>Gizlilik</a>
+      <a href="privacy.html" lang-en>Privacy</a>
+      <a href="terms.html" lang-tr>Şartlar</a>
+      <a href="terms.html" lang-en>Terms</a>
+      <a href="mailto:orkuneka@gmail.com">İletişim / Contact</a>
+    </div>
+    <div lang-tr>© 2026 Score AI · Tüm hakları saklıdır.</div>
+    <div lang-en>© 2026 Score AI · All rights reserved.</div>
+  </footer>
+</div>
+
+<script>
+  function setLang(lang) {
+    document.body.classList.toggle('en', lang === 'en');
+    document.documentElement.lang = lang;
+    document.getElementById('btn-tr').classList.toggle('active', lang === 'tr');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    try { localStorage.setItem('scoreai-lang', lang); } catch(e) {}
+  }
+  try {
+    const saved = localStorage.getItem('scoreai-lang');
+    if (saved) setLang(saved);
+    else if ((navigator.language || '').toLowerCase().startsWith('en')) setLang('en');
+  } catch(e) {}
+</script>
+</body>
+</html>
